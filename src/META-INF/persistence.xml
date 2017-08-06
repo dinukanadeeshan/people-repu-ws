@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="PeopleRepuPU"/>
+    <persistence-unit name="PeopleRepuPU">
+        <class>com.redonz.hb.peoplerepu.entity.CommentEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.ConnectionEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.PostEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.ProfessionEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.ReputationEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.SkillEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.TaskEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.UpdateEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.UserEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity</class>
+        <class>com.redonz.hb.peoplerepu.entity.UserHasSkillEntity</class>
+        <properties>
+            <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/peoplerepu"/>
+            <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/peoplerepu"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/peoplerepu"/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/peoplerepu"/>
+            <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
 </persistence>
