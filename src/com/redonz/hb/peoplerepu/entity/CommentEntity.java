@@ -6,32 +6,32 @@ import java.sql.Time;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "comment", schema = "peoplerepu", catalog = "")
 @IdClass(CommentEntityPK.class)
 public class CommentEntity {
-    private String id;
+    private long id;
     private String comment;
     private Date commentedDate;
     private Time commentedTime;
-    private String postId;
-    private String commentor;
+    private long postId;
+    private long commentor;
 
     @Id
-    @Column(name = "id", nullable = false, length = 100)
-    public String getId() {
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "comment", nullable = false, length = 60)
+    @Column(name = "comment", nullable = false, length = 1000)
     public String getComment() {
         return comment;
     }
@@ -61,22 +61,22 @@ public class CommentEntity {
     }
 
     @Id
-    @Column(name = "Post_id", nullable = false, length = 100)
-    public String getPostId() {
+    @Column(name = "Post_id", nullable = false)
+    public long getPostId() {
         return postId;
     }
 
-    public void setPostId(String postId) {
+    public void setPostId(long postId) {
         this.postId = postId;
     }
 
     @Basic
-    @Column(name = "commentor", nullable = false, length = 100)
-    public String getCommentor() {
+    @Column(name = "commentor", nullable = false)
+    public long getCommentor() {
         return commentor;
     }
 
-    public void setCommentor(String commentor) {
+    public void setCommentor(long commentor) {
         this.commentor = commentor;
     }
 
@@ -87,26 +87,26 @@ public class CommentEntity {
 
         CommentEntity that = (CommentEntity) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
+        if (postId != that.postId) return false;
+        if (commentor != that.commentor) return false;
         if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
         if (commentedDate != null ? !commentedDate.equals(that.commentedDate) : that.commentedDate != null)
             return false;
         if (commentedTime != null ? !commentedTime.equals(that.commentedTime) : that.commentedTime != null)
             return false;
-        if (postId != null ? !postId.equals(that.postId) : that.postId != null) return false;
-        if (commentor != null ? !commentor.equals(that.commentor) : that.commentor != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (comment != null ? comment.hashCode() : 0);
         result = 31 * result + (commentedDate != null ? commentedDate.hashCode() : 0);
         result = 31 * result + (commentedTime != null ? commentedTime.hashCode() : 0);
-        result = 31 * result + (postId != null ? postId.hashCode() : 0);
-        result = 31 * result + (commentor != null ? commentor.hashCode() : 0);
+        result = 31 * result + (int) (postId ^ (postId >>> 32));
+        result = 31 * result + (int) (commentor ^ (commentor >>> 32));
         return result;
     }
 }

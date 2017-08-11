@@ -5,24 +5,25 @@ import java.sql.Date;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "update", schema = "peoplerepu", catalog = "")
 public class UpdateEntity {
-    private String id;
+    private long id;
     private Date updatedDate;
     private String description;
-    private String taskId;
+    private long taskId;
+    private long userId;
 
     @Id
-    @Column(name = "id", nullable = false, length = 100)
-    public String getId() {
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,7 +38,7 @@ public class UpdateEntity {
     }
 
     @Basic
-    @Column(name = "description", nullable = false, length = 100)
+    @Column(name = "description", nullable = false, length = 1000)
     public String getDescription() {
         return description;
     }
@@ -47,13 +48,23 @@ public class UpdateEntity {
     }
 
     @Basic
-    @Column(name = "Task_id", nullable = false, length = 100)
-    public String getTaskId() {
+    @Column(name = "Task_id", nullable = false)
+    public long getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(String taskId) {
+    public void setTaskId(long taskId) {
         this.taskId = taskId;
+    }
+
+    @Basic
+    @Column(name = "User_id", nullable = false)
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -63,20 +74,22 @@ public class UpdateEntity {
 
         UpdateEntity that = (UpdateEntity) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
+        if (taskId != that.taskId) return false;
+        if (userId != that.userId) return false;
         if (updatedDate != null ? !updatedDate.equals(that.updatedDate) : that.updatedDate != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (taskId != null ? !taskId.equals(that.taskId) : that.taskId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (updatedDate != null ? updatedDate.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (taskId != null ? taskId.hashCode() : 0);
+        result = 31 * result + (int) (taskId ^ (taskId >>> 32));
+        result = 31 * result + (int) (userId ^ (userId >>> 32));
         return result;
     }
 }

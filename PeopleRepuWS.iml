@@ -7,6 +7,7 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="NewPersistenceUnit" value="08c6afaa-f45e-42b1-9d76-582ee15a1ab7" />
+          <factory-entry name="PeopleRepuPU" value="08c6afaa-f45e-42b1-9d76-582ee15a1ab7" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>

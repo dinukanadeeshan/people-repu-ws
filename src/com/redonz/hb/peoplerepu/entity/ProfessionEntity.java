@@ -4,22 +4,22 @@ import javax.persistence.*;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "profession", schema = "peoplerepu", catalog = "")
 public class ProfessionEntity {
-    private String id;
+    private long id;
     private String description;
 
     @Id
-    @Column(name = "id", nullable = false, length = 30)
-    public String getId() {
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -40,7 +40,7 @@ public class ProfessionEntity {
 
         ProfessionEntity that = (ProfessionEntity) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
 
         return true;
@@ -48,7 +48,7 @@ public class ProfessionEntity {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }

@@ -6,20 +6,20 @@ import java.io.Serializable;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 public class UserHasSkillEntityPK implements Serializable {
-    private String peopleId;
+    private long peopleId;
     private int skillId;
 
-    @Column(name = "People_id", nullable = false, length = 100)
+    @Column(name = "People_id", nullable = false)
     @Id
-    public String getPeopleId() {
+    public long getPeopleId() {
         return peopleId;
     }
 
-    public void setPeopleId(String peopleId) {
+    public void setPeopleId(long peopleId) {
         this.peopleId = peopleId;
     }
 
@@ -40,15 +40,15 @@ public class UserHasSkillEntityPK implements Serializable {
 
         UserHasSkillEntityPK that = (UserHasSkillEntityPK) o;
 
+        if (peopleId != that.peopleId) return false;
         if (skillId != that.skillId) return false;
-        if (peopleId != null ? !peopleId.equals(that.peopleId) : that.peopleId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = peopleId != null ? peopleId.hashCode() : 0;
+        int result = (int) (peopleId ^ (peopleId >>> 32));
         result = 31 * result + skillId;
         return result;
     }

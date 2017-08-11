@@ -13,6 +13,7 @@
         <class>com.redonz.hb.peoplerepu.entity.UserEntity</class>
         <class>com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity</class>
         <class>com.redonz.hb.peoplerepu.entity.UserHasSkillEntity</class>
+
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/peoplerepu"/>
             <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

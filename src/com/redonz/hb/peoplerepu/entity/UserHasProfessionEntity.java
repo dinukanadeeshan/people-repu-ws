@@ -4,33 +4,33 @@ import javax.persistence.*;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "user_has_profession", schema = "peoplerepu", catalog = "")
 @IdClass(UserHasProfessionEntityPK.class)
 public class UserHasProfessionEntity {
-    private String userId;
-    private String professionId;
+    private long userId;
+    private long professionId;
 
     @Id
-    @Column(name = "User_id", nullable = false, length = 100)
-    public String getUserId() {
+    @Column(name = "User_id", nullable = false)
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
     @Id
-    @Column(name = "Profession_id", nullable = false, length = 30)
-    public String getProfessionId() {
+    @Column(name = "Profession_id", nullable = false)
+    public long getProfessionId() {
         return professionId;
     }
 
-    public void setProfessionId(String professionId) {
+    public void setProfessionId(long professionId) {
         this.professionId = professionId;
     }
 
@@ -41,16 +41,16 @@ public class UserHasProfessionEntity {
 
         UserHasProfessionEntity that = (UserHasProfessionEntity) o;
 
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (professionId != null ? !professionId.equals(that.professionId) : that.professionId != null) return false;
+        if (userId != that.userId) return false;
+        if (professionId != that.professionId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (professionId != null ? professionId.hashCode() : 0);
+        int result = (int) (userId ^ (userId >>> 32));
+        result = 31 * result + (int) (professionId ^ (professionId >>> 32));
         return result;
     }
 }

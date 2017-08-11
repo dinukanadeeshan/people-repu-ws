@@ -5,13 +5,13 @@ import java.sql.Date;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "user", schema = "peoplerepu", catalog = "")
 public class UserEntity {
-    private String id;
+    private long id;
     private String fName;
     private String lName;
     private Date dob;
@@ -19,12 +19,12 @@ public class UserEntity {
     private int points;
 
     @Id
-    @Column(name = "id", nullable = false, length = 100)
-    public String getId() {
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -85,8 +85,8 @@ public class UserEntity {
 
         UserEntity that = (UserEntity) o;
 
+        if (id != that.id) return false;
         if (points != that.points) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (fName != null ? !fName.equals(that.fName) : that.fName != null) return false;
         if (lName != null ? !lName.equals(that.lName) : that.lName != null) return false;
         if (dob != null ? !dob.equals(that.dob) : that.dob != null) return false;
@@ -97,7 +97,7 @@ public class UserEntity {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (fName != null ? fName.hashCode() : 0);
         result = 31 * result + (lName != null ? lName.hashCode() : 0);
         result = 31 * result + (dob != null ? dob.hashCode() : 0);

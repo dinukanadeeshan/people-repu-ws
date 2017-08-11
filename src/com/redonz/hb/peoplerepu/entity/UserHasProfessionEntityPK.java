@@ -6,30 +6,30 @@ import java.io.Serializable;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 public class UserHasProfessionEntityPK implements Serializable {
-    private String userId;
-    private String professionId;
+    private long userId;
+    private long professionId;
 
-    @Column(name = "User_id", nullable = false, length = 100)
+    @Column(name = "User_id", nullable = false)
     @Id
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    @Column(name = "Profession_id", nullable = false, length = 30)
+    @Column(name = "Profession_id", nullable = false)
     @Id
-    public String getProfessionId() {
+    public long getProfessionId() {
         return professionId;
     }
 
-    public void setProfessionId(String professionId) {
+    public void setProfessionId(long professionId) {
         this.professionId = professionId;
     }
 
@@ -40,16 +40,16 @@ public class UserHasProfessionEntityPK implements Serializable {
 
         UserHasProfessionEntityPK that = (UserHasProfessionEntityPK) o;
 
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (professionId != null ? !professionId.equals(that.professionId) : that.professionId != null) return false;
+        if (userId != that.userId) return false;
+        if (professionId != that.professionId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (professionId != null ? professionId.hashCode() : 0);
+        int result = (int) (userId ^ (userId >>> 32));
+        result = 31 * result + (int) (professionId ^ (professionId >>> 32));
         return result;
     }
 }

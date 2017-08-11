@@ -5,44 +5,44 @@ import java.sql.Date;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 @Entity
 @Table(name = "task", schema = "peoplerepu", catalog = "")
 public class TaskEntity {
-    private String id;
-    private String giver;
-    private String taker;
+    private long taskId;
+    private long giver;
+    private long taker;
     private Date date;
 
     @Id
-    @Column(name = "id", nullable = false, length = 100)
-    public String getId() {
-        return id;
+    @Column(name = "Task_id", nullable = false)
+    public long getTaskId() {
+        return taskId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
     }
 
     @Basic
-    @Column(name = "giver", nullable = false, length = 100)
-    public String getGiver() {
+    @Column(name = "giver", nullable = false)
+    public long getGiver() {
         return giver;
     }
 
-    public void setGiver(String giver) {
+    public void setGiver(long giver) {
         this.giver = giver;
     }
 
     @Basic
-    @Column(name = "taker", nullable = false, length = 100)
-    public String getTaker() {
+    @Column(name = "taker", nullable = false)
+    public long getTaker() {
         return taker;
     }
 
-    public void setTaker(String taker) {
+    public void setTaker(long taker) {
         this.taker = taker;
     }
 
@@ -63,9 +63,9 @@ public class TaskEntity {
 
         TaskEntity that = (TaskEntity) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (giver != null ? !giver.equals(that.giver) : that.giver != null) return false;
-        if (taker != null ? !taker.equals(that.taker) : that.taker != null) return false;
+        if (taskId != that.taskId) return false;
+        if (giver != that.giver) return false;
+        if (taker != that.taker) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
 
         return true;
@@ -73,9 +73,9 @@ public class TaskEntity {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (giver != null ? giver.hashCode() : 0);
-        result = 31 * result + (taker != null ? taker.hashCode() : 0);
+        int result = (int) (taskId ^ (taskId >>> 32));
+        result = 31 * result + (int) (giver ^ (giver >>> 32));
+        result = 31 * result + (int) (taker ^ (taker >>> 32));
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }

@@ -6,30 +6,30 @@ import java.io.Serializable;
 
 /**
  * Project - PeopleRepuWS
- * Created by Dinuka Nadeeshan on 2017-08-06.
+ * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
 public class CommentEntityPK implements Serializable {
-    private String id;
-    private String postId;
+    private long id;
+    private long postId;
 
-    @Column(name = "id", nullable = false, length = 100)
+    @Column(name = "id", nullable = false)
     @Id
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    @Column(name = "Post_id", nullable = false, length = 100)
+    @Column(name = "Post_id", nullable = false)
     @Id
-    public String getPostId() {
+    public long getPostId() {
         return postId;
     }
 
-    public void setPostId(String postId) {
+    public void setPostId(long postId) {
         this.postId = postId;
     }
 
@@ -40,16 +40,16 @@ public class CommentEntityPK implements Serializable {
 
         CommentEntityPK that = (CommentEntityPK) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (postId != null ? !postId.equals(that.postId) : that.postId != null) return false;
+        if (id != that.id) return false;
+        if (postId != that.postId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (postId != null ? postId.hashCode() : 0);
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (int) (postId ^ (postId >>> 32));
         return result;
     }
 }
