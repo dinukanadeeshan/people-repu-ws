@@ -12,6 +12,9 @@ import java.sql.Time;
 @Entity
 @Table(name = "comment", schema = "peoplerepu", catalog = "")
 @IdClass(CommentEntityPK.class)
+@NamedQueries({
+        @NamedQuery(name = "CommentEntity.findAll", query = "SELECT u FROM CommentEntity u")
+})
 public class CommentEntity {
     private long id;
     private String comment;

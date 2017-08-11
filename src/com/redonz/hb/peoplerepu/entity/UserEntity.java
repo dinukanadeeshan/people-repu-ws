@@ -10,6 +10,10 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "user", schema = "peoplerepu", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = "UserEntity.findAll", query = "SELECT u FROM UserEntity u")
+})
+
 public class UserEntity {
     private long id;
     private String fName;

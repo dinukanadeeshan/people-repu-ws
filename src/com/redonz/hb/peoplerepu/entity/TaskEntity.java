@@ -10,6 +10,9 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "task", schema = "peoplerepu", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = "TaskEntity.findAll", query = "SELECT u FROM TaskEntity u")
+})
 public class TaskEntity {
     private long taskId;
     private long giver;

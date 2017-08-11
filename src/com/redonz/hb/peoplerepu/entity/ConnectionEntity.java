@@ -11,6 +11,9 @@ import java.sql.Date;
 @Entity
 @Table(name = "connection", schema = "peoplerepu", catalog = "")
 @IdClass(ConnectionEntityPK.class)
+@NamedQueries({
+        @NamedQuery(name = "ConnectionEntity.findAll", query = "SELECT u FROM ConnectionEntity u")
+})
 public class ConnectionEntity {
     private long user1;
     private long user2;

@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_has_profession", schema = "peoplerepu", catalog = "")
 @IdClass(UserHasProfessionEntityPK.class)
+@NamedQueries({
+        @NamedQuery(name = "UserHasProfessionEntity.findAll", query = "SELECT u FROM UserHasProfessionEntity u")
+})
 public class UserHasProfessionEntity {
     private long userId;
     private long professionId;

@@ -9,6 +9,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "profession", schema = "peoplerepu", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = "ProfessionEntity.findAll", query = "SELECT u FROM ProfessionEntity u")
+})
 public class ProfessionEntity {
     private long id;
     private String description;

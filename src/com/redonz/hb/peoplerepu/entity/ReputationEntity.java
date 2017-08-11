@@ -9,6 +9,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "reputation", schema = "peoplerepu", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = "ReputationEntity.findAll", query = "SELECT u FROM ReputationEntity u")
+})
 public class ReputationEntity {
     private long id;
     private int points;

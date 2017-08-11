@@ -11,6 +11,9 @@ import java.sql.Time;
  */
 @Entity
 @Table(name = "post", schema = "peoplerepu", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = "PostEntity.findAll", query = "SELECT u FROM PostEntity u")
+})
 public class PostEntity {
     private long id;
     private long owner;
