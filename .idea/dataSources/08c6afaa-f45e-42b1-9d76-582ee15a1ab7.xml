@@ -369,28 +369,40 @@ user2</ColNames>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <key id="73" parent="14" name="PRIMARY">
+    <column id="73" parent="14" name="user_name">
+      <Position>7</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="74" parent="14" name="password">
+      <Position>8</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="75" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="74" parent="15" name="User_id">
+    <column id="76" parent="15" name="User_id">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="75" parent="15" name="Profession_id">
+    <column id="77" parent="15" name="Profession_id">
       <Position>2</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="76" parent="15" name="PRIMARY">
+    <key id="78" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>User_id
 Profession_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="77" parent="15" name="fk_User_has_Profession_User1">
+    <foreign-key id="79" parent="15" name="fk_User_has_Profession_User1">
       <ColNames>User_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -399,7 +411,7 @@ Profession_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="78" parent="15" name="fk_User_has_Profession_Profession1">
+    <foreign-key id="80" parent="15" name="fk_User_has_Profession_Profession1">
       <ColNames>Profession_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>profession</RefTableName>
@@ -408,23 +420,23 @@ Profession_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="79" parent="16" name="People_id">
+    <column id="81" parent="16" name="People_id">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="80" parent="16" name="Skill_id">
+    <column id="82" parent="16" name="Skill_id">
       <Position>2</Position>
       <DataType>INT(10)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="81" parent="16" name="PRIMARY">
+    <key id="83" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>People_id
 Skill_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="82" parent="16" name="fk_People_has_Skill_People1">
+    <foreign-key id="84" parent="16" name="fk_People_has_Skill_People1">
       <ColNames>People_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -433,7 +445,7 @@ Skill_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="83" parent="16" name="fk_People_has_Skill_Skill1">
+    <foreign-key id="85" parent="16" name="fk_People_has_Skill_Skill1">
       <ColNames>Skill_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>skill</RefTableName>

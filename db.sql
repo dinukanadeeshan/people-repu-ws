@@ -5,6 +5,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema peoplerepu
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `peoplerepu` ;
 CREATE SCHEMA IF NOT EXISTS `peoplerepu` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `peoplerepu` ;
 
@@ -20,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `peoplerepu`.`User` (
   `dob` DATE NOT NULL,
   `joined_date` DATE NOT NULL,
   `points` INT NOT NULL DEFAULT 0,
+  `user_name` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

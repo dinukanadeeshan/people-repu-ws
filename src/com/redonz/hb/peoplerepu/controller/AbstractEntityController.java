@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AbstractEntityController<I, T> implements EntityController<I, T> {
 
-    @PersistenceContext(unitName = "PeopleRepuWS2PU")
+    @PersistenceContext(unitName = "PeopleRepuPU")
     private EntityManager em;
 
     private Class<I> classI;
