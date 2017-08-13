@@ -5,6 +5,7 @@ import com.redonz.hb.peoplerepu.controller.UserEntityController;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
 
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
@@ -14,6 +15,8 @@ import javax.persistence.Query;
  * Created by Dinuka Nadeeshan on 2017-08-12.
  * dinuka.nadeeshan1993@gmail.com
  */
+@WebService(serviceName = "UserWebService")
+//@Named
 @Stateless
 public class UserEntityControllerImpl extends AbstractEntityController<Long, UserEntity> implements UserEntityController {
 

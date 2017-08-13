@@ -3,7 +3,7 @@ package com.redonz.hb.peoplerepu.service;
 import com.redonz.hb.peoplerepu.controller.UserEntityController;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -15,11 +15,13 @@ import javax.ws.rs.core.UriInfo;
  * dinuka.nadeeshan1993@gmail.com
  */
 @Path("user")
+
 public class UserWebService {
     @Context
     private UriInfo context;
 
-    @Inject
+    @EJB
+//    @Inject
     private UserEntityController controllerEntity;
 
     /**

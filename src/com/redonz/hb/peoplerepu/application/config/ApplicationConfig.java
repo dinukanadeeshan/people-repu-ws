@@ -6,7 +6,7 @@
 
 package com.redonz.hb.peoplerepu.application.config;
 
-import com.redonz.hb.peoplerepu.test.HelloWorld;
+import com.redonz.hb.peoplerepu.service.UserWebService;
 
 import javax.ws.rs.core.Application;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
-        resources.add(HelloWorld.class);
+        resources.add(UserWebService.class);
         return resources;
     }
 
