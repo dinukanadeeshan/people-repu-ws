@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
-public class AbstractEntityControllerTest {
+public class AbstractEntityDAOTest {
     @org.junit.Before
     public void setUp() throws Exception {
 

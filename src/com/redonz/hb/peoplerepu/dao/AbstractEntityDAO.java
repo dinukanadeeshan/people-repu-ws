@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.redonz.hb.peoplerepu.controller;
+package com.redonz.hb.peoplerepu.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
-public class AbstractEntityController<I, T> implements EntityController<I, T> {
+public class AbstractEntityDAO<I, T> implements EntityDAO<I, T> {
 
     @PersistenceContext(unitName = "PeopleRepuPU")
     private EntityManager em;
@@ -23,7 +23,7 @@ public class AbstractEntityController<I, T> implements EntityController<I, T> {
     private Class<I> classI;
     private Class<T> classT;
 
-    public AbstractEntityController(Class classI, Class classT) {
+    public AbstractEntityDAO(Class classI, Class classT) {
         this.classI = classI;
         this.classT = classT;
     }

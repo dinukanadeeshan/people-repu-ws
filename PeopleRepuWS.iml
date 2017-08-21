@@ -59,5 +59,8 @@
     </orderEntry>
     <orderEntry type="library" name="javax.inject-2.2.0-b14" level="project" />
     <orderEntry type="library" name="javax.annotation-api-1.2" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="org.glassfish.jersey.media:jersey-media-moxy:2.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.1" level="project" />
   </component>
 </module>

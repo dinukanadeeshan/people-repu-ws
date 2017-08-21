@@ -1,7 +1,7 @@
-package com.redonz.hb.peoplerepu.controller.impl;
+package com.redonz.hb.peoplerepu.dao.impl;
 
-import com.redonz.hb.peoplerepu.controller.AbstractEntityController;
-import com.redonz.hb.peoplerepu.controller.UserEntityController;
+import com.redonz.hb.peoplerepu.dao.AbstractEntityDAO;
+import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
 
 import javax.ejb.Stateless;
@@ -18,9 +18,9 @@ import javax.persistence.Query;
 @WebService(serviceName = "UserWebService")
 //@Named
 @Stateless
-public class UserEntityControllerImpl extends AbstractEntityController<Long, UserEntity> implements UserEntityController {
+public class UserEntityDAOImpl extends AbstractEntityDAO<Long, UserEntity> implements UserEntityDAO {
 
-    public UserEntityControllerImpl() {
+    public UserEntityDAOImpl() {
         super(Long.class, UserEntity.class);
     }
 

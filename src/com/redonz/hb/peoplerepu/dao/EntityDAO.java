@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.redonz.hb.peoplerepu.controller;
+package com.redonz.hb.peoplerepu.dao;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Dinuka Nadeeshan on 2017-08-11.
  * dinuka.nadeeshan1993@gmail.com
  */
-public interface EntityController<I, T> {
+public interface EntityDAO<I, T> {
     void insert(T entity);
 
     void delete(I id);

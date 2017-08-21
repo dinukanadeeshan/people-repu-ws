@@ -1,7 +1,8 @@
 package com.redonz.hb.peoplerepu.service;
 
-import com.redonz.hb.peoplerepu.controller.UserEntityController;
+import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
+import org.json.simple.parser.ParseException;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -22,7 +23,7 @@ public class UserWebService {
 
     @EJB
 //    @Inject
-    private UserEntityController controllerEntity;
+    private UserEntityDAO controllerEntity;
 
     /**
      * Creates a new instance of UserWebService
@@ -38,7 +39,7 @@ public class UserWebService {
      * @param password
      * @return an instance of java.lang.String
      */
-    @GET
+    @POST
     @Path("/authUser")
     @Produces(MediaType.TEXT_PLAIN)
 //    public String authUser(User user) {
@@ -50,23 +51,29 @@ public class UserWebService {
     /**
      * PUT method for updating or creating an instance of UserWebService
      *
-     * @param user
+     * @param
      * @return
      */
-    @PUT
+    @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String addUser(UserEntity user) {
-        controllerEntity.insert(user);
-        System.out.println("User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        return "User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+    @Produces(MediaType.APPLICATION_JSON)
+//    public String addUser(UserEntity user) {
+    public String addUser(String userJson) throws ParseException {
+
+//        return  userJson.get("fName").toString()+ " " + userJson.get("userName").toString();
+
+        return userJson;
+//        UserEntity user = new UserEntity();
+//        controllerEntity.insert(user);
+//        System.out.println("User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//        return "User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     }
 
-    @PUT
+    @DELETE
     @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String deleteUser(UserEntity user) {
         controllerEntity.delete(user.getId());
         return "Deleted...";
@@ -75,7 +82,7 @@ public class UserWebService {
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String updateUser(UserEntity user) {
         controllerEntity.update(user);
         return "Updated...";
@@ -84,7 +91,7 @@ public class UserWebService {
 
     @GET
     @Path("/test/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String test(@PathParam("id") String id) {
 
         return "Hellow... " + id;

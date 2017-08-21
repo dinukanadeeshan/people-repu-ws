@@ -1,4 +1,4 @@
-package com.redonz.hb.peoplerepu.controller;
+package com.redonz.hb.peoplerepu.dao;
 
 import com.redonz.hb.peoplerepu.entity.UserEntity;
 
@@ -8,7 +8,7 @@ import com.redonz.hb.peoplerepu.entity.UserEntity;
  * dinuka.nadeeshan1993@gmail.com
  */
 
-public interface UserEntityController extends EntityController<Long, UserEntity> {
+public interface UserEntityDAO extends EntityDAO<Long, UserEntity> {
     public String authenticateUser(String userName, String password);
 }
 
