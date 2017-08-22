@@ -1,7 +1,13 @@
 package com.redonz.hb.peoplerepu.service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasSkillEntity;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import javax.ejb.EJB;
@@ -16,19 +22,21 @@ import javax.ws.rs.core.UriInfo;
  * dinuka.nadeeshan1993@gmail.com
  */
 @Path("user")
-
 public class UserWebService {
     @Context
     private UriInfo context;
 
     @EJB
 //    @Inject
-    private UserEntityDAO controllerEntity;
+    private UserEntityDAO entityDAO;
+
+    private Gson gson;
 
     /**
      * Creates a new instance of UserWebService
      */
     public UserWebService() {
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     }
 
     /**
@@ -43,9 +51,9 @@ public class UserWebService {
     @Path("/authUser")
     @Produces(MediaType.TEXT_PLAIN)
 //    public String authUser(User user) {
-    public String authUser(@QueryParam("userName") String userName, @QueryParam("password") String password) {
-        return controllerEntity.authenticateUser(userName, password);
-//        return controllerEntity.authenticateUser(user.getUserName(), user.getPassword());
+    public boolean authUser(@QueryParam("userName") String userName, @QueryParam("password") String password) {
+        return entityDAO.authenticateUser(userName, password);
+//        return entityDAO.authenticateUser(user.getUserName(), user.getPassword());
     }
 
     /**
@@ -58,24 +66,28 @@ public class UserWebService {
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-//    public String addUser(UserEntity user) {
     public String addUser(String userJson) throws ParseException {
 
 //        return  userJson.get("fName").toString()+ " " + userJson.get("userName").toString();
+//        JSONParser parser = new JSONParser();
+//        JSONObject json = (JSONObject) parser.parse(userJson);
+//
 
-        return userJson;
-//        UserEntity user = new UserEntity();
-//        controllerEntity.insert(user);
-//        System.out.println("User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-//        return "User Saved...=========>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+        UserEntity u = gson.fromJson(userJson, UserEntity.class);
+        entityDAO.insert(u);
+        return u.toString();
     }
 
-    @DELETE
+    @POST
     @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String deleteUser(UserEntity user) {
-        controllerEntity.delete(user.getId());
+    public String deleteUser(String userJson) throws ParseException {
+
+        JSONParser parser = new JSONParser();
+        JSONObject user = (JSONObject) parser.parse(userJson);
+        entityDAO.delete(Long.parseLong(user.get("id").toString()));
         return "Deleted...";
     }
 
@@ -83,17 +95,32 @@ public class UserWebService {
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String updateUser(UserEntity user) {
-        controllerEntity.update(user);
+    public String updateUser(String userJson) {
+
+        UserEntity u = gson.fromJson(userJson, UserEntity.class);
+        entityDAO.update(u);
         return "Updated...";
     }
 
-
-    @GET
-    @Path("/test/{id}")
+    @POST
+    @Path("/add/skill")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String test(@PathParam("id") String id) {
+    public String addSkill(String userJson) throws ParseException {
 
-        return "Hellow... " + id;
+        UserHasSkillEntity u = gson.fromJson(userJson, UserHasSkillEntity.class);
+        entityDAO.addSkill(u);
+        return "Skill added to user...";
+    }
+
+    @POST
+    @Path("/add/profession")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String addProfession(String userJson) throws ParseException {
+
+        UserHasProfessionEntity u = gson.fromJson(userJson, UserHasProfessionEntity.class);
+        entityDAO.addProfession(u);
+        return "Profession added to user...";
     }
 }

@@ -1,6 +1,8 @@
 package com.redonz.hb.peoplerepu.dao;
 
 import com.redonz.hb.peoplerepu.entity.UserEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasSkillEntity;
 
 /**
  * Project - PeopleRepuWS
@@ -9,6 +11,10 @@ import com.redonz.hb.peoplerepu.entity.UserEntity;
  */
 
 public interface UserEntityDAO extends EntityDAO<Long, UserEntity> {
-    public String authenticateUser(String userName, String password);
+    boolean authenticateUser(String userName, String password);
+
+    void addSkill(UserHasSkillEntity userHasSkillEntity);
+
+    void addProfession(UserHasProfessionEntity userHasProfessionEntity);
 }
 

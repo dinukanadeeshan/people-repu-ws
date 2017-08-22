@@ -13,6 +13,11 @@ public class CommentEntityPK implements Serializable {
     private long id;
     private long postId;
 
+    public CommentEntityPK(long id, long postId) {
+        this.id = id;
+        this.postId = postId;
+    }
+
     @Column(name = "id", nullable = false)
     @Id
     public long getId() {

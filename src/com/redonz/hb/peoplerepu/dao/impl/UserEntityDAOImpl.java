@@ -3,6 +3,8 @@ package com.redonz.hb.peoplerepu.dao.impl;
 import com.redonz.hb.peoplerepu.dao.AbstractEntityDAO;
 import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity;
+import com.redonz.hb.peoplerepu.entity.UserHasSkillEntity;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -30,21 +32,32 @@ public class UserEntityDAOImpl extends AbstractEntityDAO<Long, UserEntity> imple
      * @return
      */
     @Override
-    public String authenticateUser(String userName, String password) {
+    public boolean authenticateUser(String userName, String password) {
         Query q = getEntityManager().createQuery("SELECT u FROM UserEntity u WHERE u.userName = :userName AND u.password = :password");
         q.setParameter("userName", userName);
         q.setParameter("password", password);
         try {
             Object rst = q.getSingleResult();
             if (rst == null) {
-                return "false";
+                return false;
             }
-            return "true";
+            return true;
         } catch (NoResultException ex) {
-            return "false";
+            return false;
         } catch (NonUniqueResultException ex) {
-            return "true";
+            return true;
         }
+    }
+
+    @Override
+    public void addSkill(UserHasSkillEntity userHasSkillEntity) {
+        getEntityManager().persist(userHasSkillEntity);
+
+    }
+
+    @Override
+    public void addProfession(UserHasProfessionEntity userHasProfessionEntity) {
+        getEntityManager().persist(userHasProfessionEntity);
     }
 
 //    @Override

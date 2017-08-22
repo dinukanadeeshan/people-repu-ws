@@ -17,7 +17,7 @@ import java.sql.Time;
 public class PostEntity {
     private long id;
     private long owner;
-    private String decription;
+    private String description;
     private Date postedDate;
     private Time postedTime;
     private byte isTask;
@@ -43,13 +43,13 @@ public class PostEntity {
     }
 
     @Basic
-    @Column(name = "decription", nullable = false, length = 1000)
-    public String getDecription() {
-        return decription;
+    @Column(name = "description", nullable = false, length = 1000)
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String decription) {
+        this.description = decription;
     }
 
     @Basic
@@ -92,7 +92,7 @@ public class PostEntity {
         if (id != that.id) return false;
         if (owner != that.owner) return false;
         if (isTask != that.isTask) return false;
-        if (decription != null ? !decription.equals(that.decription) : that.decription != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (postedDate != null ? !postedDate.equals(that.postedDate) : that.postedDate != null) return false;
         if (postedTime != null ? !postedTime.equals(that.postedTime) : that.postedTime != null) return false;
 
@@ -103,7 +103,7 @@ public class PostEntity {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (int) (owner ^ (owner >>> 32));
-        result = 31 * result + (decription != null ? decription.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (postedDate != null ? postedDate.hashCode() : 0);
         result = 31 * result + (postedTime != null ? postedTime.hashCode() : 0);
         result = 31 * result + (int) isTask;

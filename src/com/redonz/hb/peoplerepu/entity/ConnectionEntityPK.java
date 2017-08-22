@@ -13,6 +13,11 @@ public class ConnectionEntityPK implements Serializable {
     private long user1;
     private long user2;
 
+    public ConnectionEntityPK(long user1, long user2) {
+        this.user1 = user1;
+        this.user2 = user2;
+    }
+
     @Column(name = "user1", nullable = false)
     @Id
     public long getUser1() {

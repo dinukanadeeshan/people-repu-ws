@@ -14,7 +14,7 @@ import javax.persistence.*;
 })
 public class SkillEntity {
     private int id;
-    private String desc;
+    private String description;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -27,13 +27,13 @@ public class SkillEntity {
     }
 
     @Basic
-    @Column(name = "desc", nullable = false, length = 45)
-    public String getDesc() {
-        return desc;
+    @Column(name = "description", nullable = false, length = 45)
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SkillEntity {
         SkillEntity that = (SkillEntity) o;
 
         if (id != that.id) return false;
-        if (desc != null ? !desc.equals(that.desc) : that.desc != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
 
         return true;
     }
@@ -52,7 +52,7 @@ public class SkillEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (desc != null ? desc.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 }
