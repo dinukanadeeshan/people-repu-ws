@@ -2,10 +2,8 @@ package com.redonz.hb.peoplerepu.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
-import com.redonz.hb.peoplerepu.entity.UserEntity;
-import com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity;
-import com.redonz.hb.peoplerepu.entity.UserHasSkillEntity;
+import com.redonz.hb.peoplerepu.dao.*;
+import com.redonz.hb.peoplerepu.entity.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,6 +13,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import java.util.Date;
 
 /**
  * Project - PeopleRepuWS
@@ -27,8 +26,21 @@ public class UserWebService {
     private UriInfo context;
 
     @EJB
-//    @Inject
     private UserEntityDAO entityDAO;
+
+    @EJB
+    private UserHasSkillEntityDAO userHasSkillEntityDAO;
+
+    @EJB
+    private UserHasProfessionEntityDAO userHasProfessionEntityDAO;
+
+    @EJB
+    private RequestEntityDAO requestEntityDAO;
+
+    @EJB
+    private ConnectionEntityDAO connectionEntityDAO;
+
+
 
     private Gson gson;
 
@@ -109,7 +121,7 @@ public class UserWebService {
     public String addSkill(String userJson) throws ParseException {
 
         UserHasSkillEntity u = gson.fromJson(userJson, UserHasSkillEntity.class);
-        entityDAO.addSkill(u);
+        userHasSkillEntityDAO.insert(u);
         return "Skill added to user...";
     }
 
@@ -120,7 +132,35 @@ public class UserWebService {
     public String addProfession(String userJson) throws ParseException {
 
         UserHasProfessionEntity u = gson.fromJson(userJson, UserHasProfessionEntity.class);
-        entityDAO.addProfession(u);
+        userHasProfessionEntityDAO.insert(u);
         return "Profession added to user...";
+    }
+
+    @POST
+    @Path("/request/send")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String sendRequest(String userJson) throws ParseException {
+
+        RequestEntity u = gson.fromJson(userJson, RequestEntity.class);
+        requestEntityDAO.insert(u);
+        return "Request send...";
+    }
+
+    @POST
+    @Path("/request/accept")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String acceptRequest(String userJson) throws ParseException {
+
+        RequestEntity u = gson.fromJson(userJson, RequestEntity.class);
+        requestEntityDAO.delete(new RequestEntityPK(u.getSender(), u.getReciever()));
+        ConnectionEntity connectionEntity = new ConnectionEntity();
+        connectionEntity.setUser1(u.getSender());
+        connectionEntity.setUser2(u.getReciever());
+        connectionEntity.setRecomendedPeople(0l);
+        connectionEntity.setStartedDate(new java.sql.Date(new Date().getTime()));
+        connectionEntityDAO.insert(connectionEntity);
+        return "Request send...";
     }
 }

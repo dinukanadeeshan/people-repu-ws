@@ -3,8 +3,6 @@ package com.redonz.hb.peoplerepu.dao.impl;
 import com.redonz.hb.peoplerepu.dao.AbstractEntityDAO;
 import com.redonz.hb.peoplerepu.dao.UserEntityDAO;
 import com.redonz.hb.peoplerepu.entity.UserEntity;
-import com.redonz.hb.peoplerepu.entity.UserHasProfessionEntity;
-import com.redonz.hb.peoplerepu.entity.UserHasSkillEntity;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -49,16 +47,6 @@ public class UserEntityDAOImpl extends AbstractEntityDAO<Long, UserEntity> imple
         }
     }
 
-    @Override
-    public void addSkill(UserHasSkillEntity userHasSkillEntity) {
-        getEntityManager().persist(userHasSkillEntity);
-
-    }
-
-    @Override
-    public void addProfession(UserHasProfessionEntity userHasProfessionEntity) {
-        getEntityManager().persist(userHasProfessionEntity);
-    }
 
 //    @Override
 //    public List<User> getUsersByJob(String jobId) {
