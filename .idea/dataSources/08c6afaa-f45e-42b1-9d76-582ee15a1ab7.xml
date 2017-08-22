@@ -14,55 +14,54 @@
     <table id="8" parent="4" name="post"/>
     <table id="9" parent="4" name="profession"/>
     <table id="10" parent="4" name="reputation"/>
-    <table id="11" parent="4" name="skill"/>
-    <table id="12" parent="4" name="task"/>
-    <table id="13" parent="4" name="update"/>
-    <table id="14" parent="4" name="user"/>
-    <table id="15" parent="4" name="user_has_profession"/>
-    <table id="16" parent="4" name="user_has_skill"/>
-    <column id="17" parent="6" name="id">
+    <table id="11" parent="4" name="request"/>
+    <table id="12" parent="4" name="skill"/>
+    <table id="13" parent="4" name="task"/>
+    <table id="14" parent="4" name="update"/>
+    <table id="15" parent="4" name="user"/>
+    <table id="16" parent="4" name="user_has_profession"/>
+    <table id="17" parent="4" name="user_has_skill"/>
+    <column id="18" parent="6" name="id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="18" parent="6" name="comment">
+    <column id="19" parent="6" name="comment">
       <Position>2</Position>
-      <DataType>VARCHAR(60)|12</DataType>
+      <DataType>VARCHAR(1000)|12</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="19" parent="6" name="commented_date">
+    <column id="20" parent="6" name="commented_date">
       <Position>3</Position>
       <DataType>DATE(10)|91</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="20" parent="6" name="commented_time">
+    <column id="21" parent="6" name="commented_time">
       <Position>4</Position>
       <DataType>TIME(8)|92</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="21" parent="6" name="Post_id">
+    <column id="22" parent="6" name="Post_id">
       <Position>5</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="22" parent="6" name="commentor">
+    <column id="23" parent="6" name="commentor">
       <Position>6</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="23" parent="6" name="PRIMARY">
+    <key id="24" parent="6" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id
 Post_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="24" parent="6" name="fk_Comment_Post1">
+    <foreign-key id="25" parent="6" name="fk_Comment_Post1">
       <ColNames>Post_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>post</RefTableName>
@@ -71,7 +70,7 @@ Post_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="25" parent="6" name="fk_Comment_People1">
+    <foreign-key id="26" parent="6" name="fk_Comment_People1">
       <ColNames>commentor</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -80,36 +79,34 @@ Post_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="26" parent="7" name="user1">
+    <column id="27" parent="7" name="user1">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="27" parent="7" name="user2">
+    <column id="28" parent="7" name="user2">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="28" parent="7" name="recomended_people">
+    <column id="29" parent="7" name="recomended_people">
       <Position>3</Position>
-      <DataType>VARCHAR(100)|12</DataType>
-      <DefaultExpression>&apos;self&apos;</DefaultExpression>
+      <DataType>BIGINT(19)|-5</DataType>
+      <DefaultExpression>-1</DefaultExpression>
     </column>
-    <column id="29" parent="7" name="started_date">
+    <column id="30" parent="7" name="started_date">
       <Position>4</Position>
       <DataType>DATE(10)|91</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="30" parent="7" name="PRIMARY">
+    <key id="31" parent="7" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user1
 user2</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="31" parent="7" name="fk_People_has_People_People">
+    <foreign-key id="32" parent="7" name="fk_People_has_People_People">
       <ColNames>user1</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -118,7 +115,7 @@ user2</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="32" parent="7" name="fk_People_has_People_People1">
+    <foreign-key id="33" parent="7" name="fk_People_has_People_People1">
       <ColNames>user2</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -127,7 +124,7 @@ user2</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="33" parent="7" name="fk_Connection_People1">
+    <foreign-key id="34" parent="7" name="fk_Connection_People1">
       <ColNames>recomended_people</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -136,42 +133,46 @@ user2</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="34" parent="8" name="id">
+    <column id="35" parent="8" name="id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="35" parent="8" name="owner">
+    <column id="36" parent="8" name="owner">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="36" parent="8" name="decription">
+    <column id="37" parent="8" name="description">
       <Position>3</Position>
-      <DataType>VARCHAR(45)|12</DataType>
+      <DataType>VARCHAR(1000)|12</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="37" parent="8" name="posted_date">
+    <column id="38" parent="8" name="posted_date">
       <Position>4</Position>
       <DataType>DATE(10)|91</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="38" parent="8" name="posted_time">
+    <column id="39" parent="8" name="posted_time">
       <Position>5</Position>
       <DataType>TIME(8)|92</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="39" parent="8" name="PRIMARY">
+    <column id="40" parent="8" name="is_task">
+      <Position>6</Position>
+      <DataType>TINYINT(3)|-6</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="41" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="40" parent="8" name="fk_Post_People1">
+    <foreign-key id="42" parent="8" name="fk_Post_People1">
       <ColNames>owner</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -180,101 +181,134 @@ user2</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="41" parent="9" name="id">
+    <column id="43" parent="9" name="id">
       <Position>1</Position>
-      <DataType>VARCHAR(30)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="42" parent="9" name="description">
+    <column id="44" parent="9" name="description">
       <Position>2</Position>
       <DataType>VARCHAR(45)|12</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="43" parent="9" name="PRIMARY">
+    <key id="45" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="44" parent="10" name="id">
+    <column id="46" parent="10" name="id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="45" parent="10" name="Task_id">
+    <column id="47" parent="10" name="points">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="46" parent="10" name="points">
-      <Position>3</Position>
       <DataType>INT(10)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="47" parent="10" name="PRIMARY">
+    <key id="48" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id
-Task_id</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="48" parent="10" name="fk_Reputation_Task1">
-      <ColNames>Task_id</ColNames>
+    <foreign-key id="49" parent="10" name="id">
+      <ColNames>id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>task</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>Task_id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="50" parent="11" name="sender">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="11" name="reciever">
+      <Position>2</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="52" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sender
+reciever</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="11" name="fk_Request_User1">
+      <ColNames>sender</ColNames>
+      <RefSchemaName>peoplerepu</RefSchemaName>
+      <RefTableName>user</RefTableName>
       <RefKeyName>PRIMARY</RefKeyName>
       <RefColNames>id</RefColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="49" parent="11" name="id">
+    <foreign-key id="54" parent="11" name="fk_Request_User2">
+      <ColNames>reciever</ColNames>
+      <RefSchemaName>peoplerepu</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="55" parent="12" name="id">
       <Position>1</Position>
       <DataType>INT(10)|4</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="50" parent="11" name="desc">
+    <column id="56" parent="12" name="description">
       <Position>2</Position>
       <DataType>VARCHAR(45)|12</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="51" parent="11" name="PRIMARY">
+    <key id="57" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="52" parent="12" name="id">
+    <column id="58" parent="13" name="Task_id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="53" parent="12" name="giver">
+    <column id="59" parent="13" name="giver">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="54" parent="12" name="taker">
+    <column id="60" parent="13" name="taker">
       <Position>3</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="55" parent="12" name="date">
+    <column id="61" parent="13" name="date">
       <Position>4</Position>
       <DataType>DATE(10)|91</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="56" parent="12" name="PRIMARY">
+    <key id="62" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>Task_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="57" parent="12" name="fk_People_has_People_People2">
+    <foreign-key id="63" parent="13" name="fk_Task_Post1">
+      <ColNames>Task_id</ColNames>
+      <RefSchemaName>peoplerepu</RefSchemaName>
+      <RefTableName>post</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="64" parent="13" name="fk_People_has_People_People2">
       <ColNames>giver</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -283,7 +317,7 @@ Task_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="58" parent="12" name="fk_People_has_People_People3">
+    <foreign-key id="65" parent="13" name="fk_People_has_People_People3">
       <ColNames>taker</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -292,104 +326,40 @@ Task_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="59" parent="13" name="id">
+    <column id="66" parent="14" name="id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="60" parent="13" name="updated_date">
+    <column id="67" parent="14" name="updated_date">
       <Position>2</Position>
       <DataType>DATE(10)|91</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="61" parent="13" name="description">
+    <column id="68" parent="14" name="description">
       <Position>3</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>VARCHAR(1000)|12</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="62" parent="13" name="Task_id">
+    <column id="69" parent="14" name="Task_id">
       <Position>4</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="63" parent="13" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="64" parent="13" name="fk_Update_Task1">
-      <ColNames>Task_id</ColNames>
-      <RefSchemaName>peoplerepu</RefSchemaName>
-      <RefTableName>task</RefTableName>
-      <RefKeyName>PRIMARY</RefKeyName>
-      <RefColNames>id</RefColNames>
-      <OnUpdate>no-action</OnUpdate>
-      <OnDelete>no-action</OnDelete>
-    </foreign-key>
-    <column id="65" parent="14" name="id">
-      <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="66" parent="14" name="fName">
-      <Position>2</Position>
-      <DataType>VARCHAR(45)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="67" parent="14" name="lName">
-      <Position>3</Position>
-      <DataType>VARCHAR(45)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="68" parent="14" name="dob">
-      <Position>4</Position>
-      <DataType>DATE(10)|91</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="69" parent="14" name="joined_date">
+    <column id="70" parent="14" name="User_id">
       <Position>5</Position>
-      <DataType>DATE(10)|91</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="70" parent="14" name="points">
-      <Position>6</Position>
-      <DataType>INT(10)|4</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
     </column>
     <key id="71" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="72" parent="15" name="User_id">
-      <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <column id="73" parent="15" name="Profession_id">
-      <Position>2</Position>
-      <DataType>VARCHAR(30)|12</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-    </column>
-    <key id="74" parent="15" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>User_id
-Profession_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="75" parent="15" name="fk_User_has_Profession_User1">
+    <foreign-key id="72" parent="14" name="fk_Update_User1">
       <ColNames>User_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -398,7 +368,85 @@ Profession_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="76" parent="15" name="fk_User_has_Profession_Profession1">
+    <column id="73" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="15" name="fName">
+      <Position>2</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="75" parent="15" name="lName">
+      <Position>3</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="76" parent="15" name="dob">
+      <Position>4</Position>
+      <DataType>DATE(10)|91</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="77" parent="15" name="joined_date">
+      <Position>5</Position>
+      <DataType>DATE(10)|91</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="78" parent="15" name="points">
+      <Position>6</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="79" parent="15" name="user_name">
+      <Position>7</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="80" parent="15" name="password">
+      <Position>8</Position>
+      <DataType>VARCHAR(45)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="81" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="82" parent="16" name="User_id">
+      <Position>1</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="16" name="Profession_id">
+      <Position>2</Position>
+      <DataType>BIGINT(19)|-5</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="84" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>User_id
+Profession_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="85" parent="16" name="fk_User_has_Profession_User1">
+      <ColNames>User_id</ColNames>
+      <RefSchemaName>peoplerepu</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="86" parent="16" name="fk_User_has_Profession_Profession1">
       <ColNames>Profession_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>profession</RefTableName>
@@ -407,24 +455,23 @@ Profession_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="77" parent="16" name="People_id">
+    <column id="87" parent="17" name="People_id">
       <Position>1</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="78" parent="16" name="Skill_id">
+    <column id="88" parent="17" name="Skill_id">
       <Position>2</Position>
       <DataType>INT(10)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="79" parent="16" name="PRIMARY">
+    <key id="89" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>People_id
 Skill_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="80" parent="16" name="fk_People_has_Skill_People1">
+    <foreign-key id="90" parent="17" name="fk_People_has_Skill_People1">
       <ColNames>People_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -433,7 +480,7 @@ Skill_id</ColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="81" parent="16" name="fk_People_has_Skill_Skill1">
+    <foreign-key id="91" parent="17" name="fk_People_has_Skill_Skill1">
       <ColNames>Skill_id</ColNames>
       <RefSchemaName>peoplerepu</RefSchemaName>
       <RefTableName>skill</RefTableName>
