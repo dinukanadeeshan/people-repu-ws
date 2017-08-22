@@ -154,13 +154,14 @@ public class UserWebService {
     public String acceptRequest(String userJson) throws ParseException {
 
         RequestEntity u = gson.fromJson(userJson, RequestEntity.class);
-        requestEntityDAO.delete(new RequestEntityPK(u.getSender(), u.getReciever()));
+
         ConnectionEntity connectionEntity = new ConnectionEntity();
         connectionEntity.setUser1(u.getSender());
         connectionEntity.setUser2(u.getReciever());
         connectionEntity.setRecomendedPeople(0l);
         connectionEntity.setStartedDate(new java.sql.Date(new Date().getTime()));
         connectionEntityDAO.insert(connectionEntity);
+        requestEntityDAO.delete(new RequestEntityPK(u.getSender(), u.getReciever()));
         return "Request send...";
     }
 }
